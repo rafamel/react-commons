@@ -8,8 +8,12 @@ const intrim = (x) => x.replace(/\n/g, ' ').replace(/ {2,}/g, ' ');
 
 process.env.LOG_LEVEL = 'disable';
 module.exports = scripts({
-  build:
-    'cross-env NODE_ENV=production babel ./src --out-dir ./build --ignore *.test.js',
+  build: series([
+    exit0(`shx rm -r build`),
+    'cross-env NODE_ENV=production babel ./src --out-dir ./build --ignore *.test.js'
+  ]),
+  publish:
+    'nps validate build && shx cp package.json ./build/ && shx cp README.md ./build/ && cd build && npm publish --access=public',
   dev: `onchange "./src/**/*.{js,jsx}" -i -- nps private.dev`,
   fix: `prettier --write "./src/**/*.{js,jsx,ts,scss,md}"`,
   lint: {
