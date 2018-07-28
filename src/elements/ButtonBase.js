@@ -11,7 +11,7 @@ const styles = {
     '-webkit-tap-highlight-color': 'transparent',
     background: 'transparent',
     '&:focus, &:active': {
-      outline: 0,
+      outline: 'none',
       border: 0
     },
     '&:hover': { opacity: 0.9 }

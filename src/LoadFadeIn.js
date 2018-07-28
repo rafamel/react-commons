@@ -4,6 +4,8 @@ import Fade from './Fade';
 
 class LoadFadeIn extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
+    style: PropTypes.object,
     children: PropTypes.oneOfType([
       PropTypes.element,
       PropTypes.arrayOf(PropTypes.element)
@@ -37,13 +39,16 @@ class LoadFadeIn extends React.Component {
     this._isMounted = false;
   }
   render() {
+    const { className, style } = this.props;
     const ready = this.state.ready;
     const hide = ready
-      ? {}
-      : { maxHeight: '100vh', opacity: 0, overflow: 'hidden' };
+      ? { ...style }
+      : { ...style, maxHeight: '100vh', opacity: 0, overflow: 'hidden' };
     return (
       <Fade in={ready} timeout={400}>
-        <div style={hide}>{this.props.children}</div>
+        <div className={className} style={hide}>
+          {this.props.children}
+        </div>
       </Fade>
     );
   }
