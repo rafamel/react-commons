@@ -5,6 +5,7 @@ const scripts = (x) => ({ scripts: x });
 const exit0 = (x) => `${x} || shx echo `;
 const series = (x) => `(${x.join(') && (')})`;
 const intrim = (x) => x.replace(/\n/g, ' ').replace(/ {2,}/g, ' ');
+const fs = require('fs');
 
 process.env.LOG_LEVEL = 'disable';
 module.exports = scripts({
@@ -12,8 +13,9 @@ module.exports = scripts({
     exit0(`shx rm -r build`),
     'cross-env NODE_ENV=production babel ./src --out-dir ./build --ignore *.test.js'
   ]),
-  publish:
-    'nps validate build && shx cp package.json ./build/ && shx cp README.md ./build/ && cd build && npm publish --access=public',
+  publish: `nps validate build && ${sx(
+    'packageCp'
+  )} && shx cp README.md ./build/ && cd build && npm publish --access=public && cd ../ && shx rm -r build`,
   dev: `onchange "./src/**/*.{js,jsx}" -i -- nps private.dev`,
   fix: `prettier --write "./src/**/*.{js,jsx,ts,scss,md}"`,
   lint: {
@@ -49,5 +51,10 @@ registerSx({
       process.stdout.write('\r' + process.env.MSG + ' ' + i);
       !i-- && (clearInterval(t) || true) && console.log('\n');
     }, 1000);
+  },
+  packageCp: () => {
+    const pck = fs.readFileSync('./package.json');
+    const { scripts, ...obj } = JSON.parse(pck.toString());
+    fs.writeFileSync('./build/package.json', JSON.stringify(obj, null, 2));
   }
 });
