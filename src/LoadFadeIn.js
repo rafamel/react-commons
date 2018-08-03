@@ -11,10 +11,12 @@ class LoadFadeIn extends React.Component {
       PropTypes.arrayOf(PropTypes.element)
     ]).isRequired,
     timeout: PropTypes.number,
-    onLoad: PropTypes.func
+    onLoad: PropTypes.func,
+    ready: PropTypes.bool
   };
   static defaultProps = {
-    timeout: 10000
+    timeout: 10000,
+    ready: true
   };
   state = {
     ready: false
@@ -26,7 +28,7 @@ class LoadFadeIn extends React.Component {
     const startAt = Date.now();
     const interval = setInterval(() => {
       if (
-        document.readyState === 'complete' ||
+        (document.readyState === 'complete' && this.props.ready) ||
         Date.now() - startAt > this.props.timeout
       ) {
         clearInterval(interval);
