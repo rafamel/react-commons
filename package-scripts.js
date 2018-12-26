@@ -6,8 +6,6 @@ const OUT_DIR = 'build';
 
 process.env.LOG_LEVEL = 'disable';
 module.exports = scripts({
-  postinstall:
-    'npm outdated || shx echo "\nUpdate dependencies: \'npm run update\'\n"',
   build: series([
     'nps validate',
     exit0(`shx rm -r ${OUT_DIR}`),
