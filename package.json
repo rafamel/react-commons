@@ -1,96 +1,108 @@
 {
   "name": "@rafamel/react-commons",
   "version": "0.0.4",
-  "description": "Rafamel's React Commons",
-  "homepage": "https://github.com/rafamel/react-commons",
   "author": "Rafa Mel",
+  "description": "Rafamel's React Commons",
   "scripts": {
-    "precommit": "cross-env MSG='Committing in:' nps validate",
-    "start": "nps dev",
+    "prepublishOnly": "exit 1",
+    "postinstall": "nps postinstall",
+    "start": "npm run watch",
     "build": "nps build",
     "publish": "nps publish",
-    "dev": "nps dev",
+    "watch": "nps watch",
     "fix": "nps fix",
     "lint": "nps lint",
+    "lint:test": "nps lint.test",
     "lint:md": "nps lint.md",
+    "lint:scripts": "nps lint.scripts",
     "test": "nps test",
     "test:watch": "nps test.watch",
     "validate": "nps validate",
     "update": "nps update",
-    "clean": "nps clean"
+    "clean": "nps clean",
+    "nps": "nps",
+    "jake": "jake"
   },
-  "contributors": [
-    {
-      "name": "Rafa Mel"
-    }
-  ],
+  "license": "MIT",
+  "homepage": "https://github.com/rafamel/react-commons",
   "repository": {
     "type": "git",
     "url": "https://github.com/rafamel/react-commons"
   },
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rafamel/react-commons/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/rafamel/react-commons/raw/master/LICENSE"
-    }
-  ],
-  "dependencies": {
-    "@material-ui/core": "^1.4.1",
-    "emotion": "^9.2.6",
-    "lodash.isequal": "^4.5.0",
-    "lottie-web": "^5.2.0",
-    "memoizee": "^0.4.12",
-    "react": "^16.3.1",
-    "react-dom": "^16.4.1",
-    "react-transition-group": "^2.4.0",
-    "resize-observer-polyfill": "^1.5.0"
-  },
   "devDependencies": {
-    "@types/jest": "^23.3.1",
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.6",
-    "babel-plugin-emotion": "^9.2.6",
-    "babel-plugin-react-transform": "^3.0.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-runtime": "^6.26.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-proposal-decorators": "^7.2.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "@emotion/babel-preset-css-prop": "^10.0.5",
+    "@emotion/core": "^10.0.5",
+    "@types/jest": "^23.3.9",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-preset-react-app": "^7.0.0",
+    "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "eslint": "^5.2.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jest": "^21.18.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^7.10.0",
-    "eslint-plugin-react-app": "^3.0.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "eslint-restricted-globals": "^0.1.1",
-    "husky": "^0.14.3",
-    "jest-cli": "^23.4.2",
-    "markdownlint-cli": "^0.11.0",
-    "nps": "^5.9.2",
-    "onchange": "^4.1.0",
-    "prettier": "^1.13.7",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "eslint": "^5.11.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-import-resolver-babel-module": "^5.0.0-beta.1",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.1.2",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-app": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-restricted-globals": "^0.2.0",
+    "husky": "^1.2.1",
+    "jake": "^8.0.19",
+    "jest-cli": "^23.6.0",
+    "markdownlint-cli": "^0.13.0",
+    "nps": "^5.9.3",
+    "onchange": "^5.2.0",
+    "prettier": "^1.15.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "shx": "^0.3.2"
   },
+  "peerDependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "@emotion/core": "^10.0.5"
+  },
+  "dependencies": {
+    "lodash.isequal": "^4.5.0",
+    "lottie-web": "^5.4.2",
+    "react-transition-group": "^2.5.2",
+    "resize-observer-polyfill": "^1.5.1"
+  },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>setup/test-setup.js",
+    "setupTestFrameworkScriptFile": "<rootDir>scripts/test-setup.js",
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
+      "src/**/*.{js,ts,jsx}"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/build"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "cross-env MSG=\"Committing in:\" nps validate"
+    }
   }
 }

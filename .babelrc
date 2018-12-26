@@ -1,26 +1,17 @@
 {
   "presets": [
-    "env",
-    "react"
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@emotion/babel-preset-css-prop"
   ],
   "plugins": [
-    "transform-decorators-legacy",
     [
-      "emotion",
-      {
-        "autoLabel": true,
-        "hoist": true
-      }
+      "babel-plugin-module-resolver",
+      { "root": ["./src/lib"], "alias": { "~": "./src" } }
     ],
-    "transform-class-properties",
-    [
-      "transform-object-rest-spread",
-      {
-        "useBuiltIns": true
-      }
-    ]
+    ["@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": false }],
+    "@babel/plugin-proposal-class-properties",
+    ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }]
   ],
-  "ignore": [
-    "node_modules"
-  ]
+  "ignore": ["node_modules"]
 }

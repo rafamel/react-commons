@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import { css, cx } from 'emotion';
 
 const Fade = ({
   children,
@@ -16,10 +15,8 @@ const Fade = ({
       {(state) => (
         <div
           style={{ opacity: inProp ? 1 : 0, ...style }}
-          className={cx(
-            css({ transition: `all ${timeout}ms ease-in-out` }),
-            className
-          )}
+          css={{ transition: `all ${timeout}ms ease-in-out` }}
+          {...other}
         >
           {children}
         </div>

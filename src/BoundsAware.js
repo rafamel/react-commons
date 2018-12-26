@@ -35,11 +35,13 @@ class BoundsAware extends React.Component {
     this.updateDimensions();
   }
   componentDidMount() {
+    // eslint-disable-next-line no-restricted-globals
     window.addEventListener('resize', this.updateDimensions);
     this.observer.observe(this.rootNode);
   }
   componentWillUnmount() {
     this.observer.unobserve(this.rootNode);
+    // eslint-disable-next-line no-restricted-globals
     window.removeEventListener('resize', this.updateDimensions);
   }
   render() {

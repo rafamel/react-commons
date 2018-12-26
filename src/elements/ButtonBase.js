@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css, cx } from 'emotion';
 
 const styles = {
   root: {
@@ -8,7 +7,7 @@ const styles = {
     userSelect: 'none',
     border: 'none',
     outline: 'none',
-    '-webkit-tap-highlight-color': 'transparent',
+    WebkitTapHighlightColor: 'transparent',
     background: 'transparent',
     '&:focus, &:active': {
       outline: 'none',
@@ -18,9 +17,9 @@ const styles = {
   }
 };
 
-const ButtonBase = ({ children, className, ...other }) => {
+const ButtonBase = ({ children, ...other }) => {
   return (
-    <button className={cx(css(styles.root), className)} {...other}>
+    <button css={styles.root} {...other}>
       {children}
     </button>
   );

@@ -1,4 +1,4 @@
-_test.js
+lib
 build
 dist
 out
@@ -6,3 +6,4 @@ out
 .cache
 coverage
 node_modules
+*.md
